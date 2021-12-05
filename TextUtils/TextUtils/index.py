@@ -5,7 +5,17 @@ def home(request):
     return render(request, 'index.html')
 
 def results(request):
-    djtext = request.GET.get('text','default')
-    djtext = djtext.upper()
-    nfa = {'text':djtext}
+    text = request.GET.get('text','default')
+    uppertext = text.upper()
+    lowertext = text.lower()
+    counttext = len(text)
+    wordcounttext = text.count(' ') + 1
+    nfa = {
+        'text': text,
+        'uppertext':uppertext,
+        'lowertext':lowertext,
+        'counttext':counttext,
+        'wordcounttext':wordcounttext
+        }
+    
     return render(request, 'results.html', nfa)
